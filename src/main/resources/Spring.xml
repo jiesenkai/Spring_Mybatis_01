@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- 开启注解扫描器 包的范围-->
+    <context:component-scan base-package="com.jsk"></context:component-scan>
+    <!-- 引入数据源信息properties文件-->
+    <context:property-placeholder location="jdbc.properties"></context:property-placeholder>
+
+    <!-- 管理和注入 SqlSessionFacotryBean -->
+    <bean class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="typeAliasesPackage" value="com.jsk.pojo"></property>
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+    <!-- 数据连接池 注入德鲁伊连接池-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"></property>
+        <property name="username" value="${jdbc.username}"></property>
+        <property name="url" value="${jdbc.url}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+    </bean>
+    <!-- 引入Mapper进行反射实现接口-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.jsk.mappers"></property>
+    </bean>
+
+
+</beans>

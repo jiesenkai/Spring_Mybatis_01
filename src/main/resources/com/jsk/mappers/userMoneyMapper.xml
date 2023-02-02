@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jsk.mappers.userMoneyMapper">
+
+    <!--/* 查询所有数据 */
+    List<UserMoneyInfo> findAll();-->
+    <select id="findAll" resultType="userMoneyInfo">
+        select *from user_money
+    </select>
+
+    <!--/* 通过用户名查询数据 */
+    UserMoneyInfo findByName(String name);-->
+    <select id="findByName" resultType="userMoneyInfo">
+        select *from user_money where username=#{username}
+    </select>
+
+    <!--/* 更新用户信息 */
+    int update(UserMoneyInfo userMoneyInfo);-->
+    <update id="update" parameterType="userMoneyInfo">
+        update user_money set username=#{username} and money=#{money} where id=#{id}
+    </update>
+
+</mapper>
