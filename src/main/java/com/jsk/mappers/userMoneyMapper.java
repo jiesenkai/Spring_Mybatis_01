@@ -20,5 +20,7 @@ public interface userMoneyMapper {
     /* 更新用户信息 */
     int update(UserMoneyInfo userMoneyInfo);
 
+    //插入一个list数据
+    int insertList(List<UserMoneyInfo> lists);
 
 }

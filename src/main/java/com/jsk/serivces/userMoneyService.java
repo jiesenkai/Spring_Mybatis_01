@@ -16,4 +16,12 @@ public interface userMoneyService {
     List<UserMoneyInfo> getAll();
 
     UserMoneyInfo getByName(String name);
+    //更新一条数据
+    int update(UserMoneyInfo userMoneinfo);
+
+    //插入一个list数据到数据库
+    int insertList(List<UserMoneyInfo> lists);
+
+    //转钱
+    int transfuse(String sender,String payee,Double money);
 }

@@ -19,7 +19,14 @@
     <!--/* 更新用户信息 */
     int update(UserMoneyInfo userMoneyInfo);-->
     <update id="update" parameterType="userMoneyInfo">
-        update user_money set username=#{username} and money=#{money} where id=#{id}
+        update user_money set username=#{username},money=#{money} where id=#{id}
+    </update>
+
+    <update id="insertList" parameterType="java.util.List">
+        insert into user_money(username,money) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.username},#{item.money})
+        </foreach>
     </update>
 
 </mapper>

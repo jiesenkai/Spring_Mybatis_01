@@ -14,6 +14,12 @@
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
     <dependencies>
+        <!-- 事务处理包-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+            <version>6.0.4</version>
+        </dependency>
         <!-- Spring的核心包-->
         <dependency>
             <groupId>org.springframework</groupId>
